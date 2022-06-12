@@ -21,14 +21,14 @@ const Login = ({navigation}) => {
       console.log(error);
     }
   };
-  
+
   return (
     <SafeAreaView style={{paddingHorizontal: 20}}>
       <Text style={{fontSize: 20, marginTop: '40%', marginBottom: 30}}>Login</Text>
       <TextInput placeholder="Email" keyboard="email-address" value={email} onChange={setEmail} />
       <TextInput value={password} onChange={setPassword} placeholder="Password" secureTextEntry />
       <Button isLoading={isLoading} title="Login" onPress={handleLogin} />
-      <Text onPress={() => navigation.navigate('profile')} style={{marginTop: 10, textAlign: 'center', color: '#505be4'}}>
+      <Text onPress={() => navigation.navigate('register')} style={{marginTop: 10, textAlign: 'center', color: '#505be4'}}>
         Don't have an account Register ?
       </Text>
     </SafeAreaView>
