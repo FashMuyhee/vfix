@@ -1,5 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 
 class AuthService {
   validateEmail = (email) => {
@@ -147,7 +148,8 @@ class AuthService {
       const isExist = await docRef.get();
       if (isExist.exists) {
         const data = isExist.data();
-        const profile = { ...data };
+        const dp = await this.getProfileImage(data?.avatar);
+        const profile = { ...data, dpLink: dp };
         return profile;
       } else {
         return [];
@@ -159,7 +161,7 @@ class AuthService {
 
   getMechanics = async () => {
     try {
-      const docRef = firestore().collection('users').where('isMechanic','==', true);
+      const docRef = firestore().collection('users').where('isMechanic', '==', true);
       const isExist = await docRef.get();
       if (!isExist.empty) {
         const data = isExist.docs
@@ -170,6 +172,32 @@ class AuthService {
       } else {
         return [];
       }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  getProfileImage = async (imageName) => {
+    try {
+      const res = await storage()
+        .ref('/' + imageName)
+        .getDownloadURL();
+      return res;
+    } catch (error) {
+      if ((error.code = 'storage/object-not-found')) {
+        return null;
+      }
+      console.log(error);
+    }
+  };
+
+  handleUploadDp = async (fileName, filePath) => {
+    try {
+      const user = auth().currentUser?.uid;
+      const res = await storage().ref(fileName).putFile(filePath);
+      await firestore().collection('users').doc(user).update({
+        avatar: fileName,
+      });
     } catch (error) {
       console.log(error);
     }
