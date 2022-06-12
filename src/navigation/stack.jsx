@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../screens/home';
@@ -18,10 +18,33 @@ const Stack = createStackNavigator();
 
 const RootNavigator = () => {
   const {user} = useContext(AuthContent);
+  const [details, setDetails] = useState(null);
 
   const logout = async () => {
     await auth.handelLogout();
   };
+
+  const imageToShow = () => {
+    let IMAGE_PATH = '';
+    if (details?.dpLink) {
+      IMAGE_PATH = {uri: details?.dpLink};
+    } else {
+      IMAGE_PATH = avatar;
+    }
+    return IMAGE_PATH;
+  };
+
+  const getDetails = async () => {
+    try {
+      const res = await auth.getMechanic();
+      setDetails(res);
+    } catch (error) {}
+  };
+
+  React.useEffect(() => {
+    getDetails();
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -49,7 +72,7 @@ const RootNavigator = () => {
                 headerTitle: 'Welcome',
                 headerRight: () => (
                   <Pressable onPress={() => navigation.navigate('profile')}>
-                    <Image source={avatar} style={{width: 30, height: 30, borderRadius: 30, marginRight: 10}} />
+                    <Image source={imageToShow()} style={{backgroundColor: 'teal', width: 30, height: 30, borderRadius: 30, marginRight: 10}} />
                   </Pressable>
                 ),
               })}
