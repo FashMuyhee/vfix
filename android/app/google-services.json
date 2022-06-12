@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "987291100420",
+    "project_id": "vfix-54856",
+    "storage_bucket": "vfix-54856.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987291100420:android:d2e58461b039a700605c51",
+        "android_client_info": {
+          "package_name": "com.vfix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987291100420-hvou7itgmkns4kgteag99prp3ddfdocg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD78aiuleY1vxYIz9zq5fwPnWDa6HV3Res"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987291100420-hvou7itgmkns4kgteag99prp3ddfdocg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
