@@ -19,7 +19,7 @@ export default Content;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffff',
+    backgroundColor: '#0A0A26',
     paddingTop: 10,
   },
 });

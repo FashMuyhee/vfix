@@ -1,4 +1,4 @@
-import {View, Text, Switch, KeyboardAvoidingView, ToastAndroid} from 'react-native';
+import {View, Text, Image, Switch, ScrollView, KeyboardAvoidingView, ToastAndroid} from 'react-native';
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import TextInput from '../components/TextInput';
@@ -37,16 +37,18 @@ const Register = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{paddingHorizontal: 20}}>
+    <SafeAreaView style={{backgroundColor:'#0A0A26',height:'100%'}}>
+      <ScrollView style={{paddingHorizontal: 20}}>
       <KeyboardAvoidingView behavior="position">
-        <Text style={{fontSize: 20, marginTop: '20%', marginBottom: 30}}>Register</Text>
+      <Image style={{width:100, height:100, alignSelf: 'center', marginTop:'20%'}} source={require('../images/vfixLogo.jpeg')} />
+        <Text style={{fontSize: 20, marginTop: '20%', marginBottom: 20,color:'white'}}>Register</Text>
         <TextInput value={name} onChange={setName} placeholder="Fullname" />
         <TextInput value={phone} onChange={setPhone} placeholder="Phone" keyboard="numeric" />
         <TextInput value={email} onChange={setEmail} placeholder="Email" keyboard="email-address" />
         <TextInput value={address} onChange={setAddress} placeholder="Home Address" />
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 20}}>
-          <Text>Are you a mechanic ?</Text>
-          <Switch thumbColor="#505be4" trackColor="#787FE4" value={isMech} onValueChange={handleToggle} />
+          <Text style={{color:'white'}}>Are you a mechanic ?</Text>
+          <Switch thumbColor="#505be4" trackColor={{true:"#787FE4", false: "black"}} style={{borderColor:'white'}} value={isMech} onValueChange={handleToggle} />
         </View>
         {isMech && (
           <>
@@ -58,9 +60,10 @@ const Register = ({navigation}) => {
         <TextInput value={password} onChange={setPassword} placeholder="Password" secureTextEntry />
         <Button isLoading={isLoading} title="Register" onPress={handleSubmit} />
         <Text onPress={() => navigation.navigate('login')} style={{marginTop: 10, textAlign: 'center', color: '#505be4'}}>
-          Have an account Login ?
+          <Text style={{color:'white'}}>Have an account</Text> Login ?
         </Text>
       </KeyboardAvoidingView>
+        </ScrollView>
     </SafeAreaView>
   );
 };

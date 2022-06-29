@@ -1,4 +1,4 @@
-import {View, Text, ToastAndroid} from 'react-native';
+import {View, Text, Image, ToastAndroid} from 'react-native';
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import TextInput from '../components/TextInput';
@@ -23,13 +23,14 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{paddingHorizontal: 20}}>
-      <Text style={{fontSize: 20, marginTop: '40%', marginBottom: 30}}>Login</Text>
+    <SafeAreaView style={{paddingHorizontal: 20, backgroundColor:'#0A0A26', height:'100%'}}>
+      <Image style={{width:100, height:100, alignSelf: 'center', marginTop:'20%'}} source={require('../images/vfixLogo.jpeg')} />
+      <Text style={{fontSize: 20, marginTop: '20%', marginBottom: 30, color:'white'}}>Login</Text>
       <TextInput placeholder="Email" keyboard="email-address" value={email} onChange={setEmail} />
       <TextInput value={password} onChange={setPassword} placeholder="Password" secureTextEntry />
       <Button isLoading={isLoading} title="Login" onPress={handleLogin} />
       <Text onPress={() => navigation.navigate('register')} style={{marginTop: 10, textAlign: 'center', color: '#505be4'}}>
-        Don't have an account Register ?
+        <Text style={{color: 'white'}}>Don't have an account</Text> Register ?
       </Text>
     </SafeAreaView>
   );
