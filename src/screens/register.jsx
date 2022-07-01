@@ -9,6 +9,7 @@ const Register = ({navigation}) => {
   const [isMech, setIsMech] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isPwdError, setPwdError] =  useState(false);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [bizName, setBizName] = useState('');
@@ -36,6 +37,15 @@ const Register = ({navigation}) => {
     setIsMech(!isMech);
   };
 
+  // const validatePassword = (val) => {
+  //   if (val.length >= 8) {
+  //     console.log(val);
+  //     setPassword(val);
+  //   }else{
+  //     setPwdError(true);
+  //   }
+  // }
+
   return (
     <SafeAreaView style={{backgroundColor:'#0A0A26',height:'100%'}}>
       <ScrollView style={{paddingHorizontal: 20}}>
@@ -58,12 +68,13 @@ const Register = ({navigation}) => {
           </>
         )}
         <TextInput value={password} onChange={setPassword} placeholder="Password" secureTextEntry />
+        {/* {isPwdError ? <Text style={{ color: 'red' }}>Password must contain at least 8 characters</Text> : null} */}
         <Button isLoading={isLoading} title="Register" onPress={handleSubmit} />
         <Text onPress={() => navigation.navigate('login')} style={{marginTop: 10, textAlign: 'center', color: '#505be4'}}>
           <Text style={{color:'white'}}>Have an account</Text> Login ?
         </Text>
       </KeyboardAvoidingView>
-        </ScrollView>
+      </ScrollView>
     </SafeAreaView>
   );
 };
