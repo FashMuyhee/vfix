@@ -1,4 +1,4 @@
-import {View, Text, TextInput, Image, StyleSheet, FlatList, TouchableWithoutFeedback, KeyboardAvoidingView, TouchableOpacity, Keyboard} from 'react-native';
+import {View, Text, TextInput, Image, StyleSheet, FlatList, TouchableWithoutFeedback, KeyboardAvoidingView, TouchableOpacity,} from 'react-native';
 import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import keywords from '../sample-data/faults-n-fix';
@@ -18,10 +18,10 @@ export default function Home({navigation}) {
   return (
     <SafeAreaView>
       <KeyboardAvoidingView>
-        <View style={{backgroundColor:'#0A0A26', height:'100%'}}>
+        <View style={{backgroundColor: '#0A0A26', height: '100%'}}>
           <View>
-            <View style={{height:200}}>
-              <Image source={require('../images/banner.jpg')} style={{top:-400,width:'100%'}} resizeMode="contain"/>
+            <View style={{height: 200}}>
+              <Image source={require('../images/banner.jpg')} style={{top: -400, width: '100%'}} resizeMode="contain" />
             </View>
             <View>
               <Text
@@ -34,7 +34,9 @@ export default function Home({navigation}) {
                 }}>
                 HOW CAN WE HELP YOU?
               </Text>
-              <Text style={styles.logo}><Text style={{color:'#0A0A26'}}>V</Text>FIX</Text>
+              <Text style={styles.logo}>
+                <Text style={{color: '#0A0A26'}}>V</Text>FIX
+              </Text>
             </View>
           </View>
           <View style={[styles.searchBar, {borderBottomLeftRadius: isSearched ? 0 : 10, borderBottomRightRadius: isSearched ? 0 : 10}]}>
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 30,
-    fontWeight:900,
+    fontWeight: '900',
     color: '#E5D80D',
     // textShadowColor: '#3957ED',
     // textShadowOffset: {width: 0, height: 1},

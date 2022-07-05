@@ -55,7 +55,7 @@ const RootNavigator = () => {
           headerStyle: {
             elevation: 0,
             shadowOffset: {width: 0, height: 0},
-            backgroundColor:'#0A0A26'
+            backgroundColor: '#0A0A26',
           },
           headerTitleStyle: {
             fontSize: 13,
@@ -67,10 +67,10 @@ const RootNavigator = () => {
             <Stack.Screen
               name="search"
               options={({navigation}) => ({
-                headerStyle: {
-                  backgroundColor: 'white',
-                },
                 headerTitle: 'Welcome',
+                headerTitleStyle: {
+                  fontSize: 20,
+                },
                 headerRight: () => (
                   <Pressable onPress={() => navigation.navigate('profile')}>
                     <Image source={imageToShow()} style={{backgroundColor: 'teal', width: 30, height: 30, borderRadius: 30, marginRight: 10}} />
@@ -92,6 +92,7 @@ const RootNavigator = () => {
                     onPress={() => {
                       logout();
                     }}
+                    color="white"
                     size={25}
                     style={{marginRight: 10}}
                   />
