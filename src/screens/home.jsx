@@ -18,16 +18,15 @@ export default function Home({navigation}) {
   return (
     <SafeAreaView>
       <KeyboardAvoidingView>
-        <View>
-          <Text style={styles.logo}>VFIX</Text>
-          <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <View>
-              <Image source={require('../images/sample.png')} />
+        <View style={{backgroundColor:'#0A0A26', height:'100%'}}>
+          <View>
+            <View style={{height:200}}>
+              <Image source={require('../images/banner.jpg')} style={{top:-400,width:'100%'}} resizeMode="contain"/>
             </View>
             <View>
               <Text
                 style={{
-                  color: '#3957ED',
+                  color: '#fff',
                   fontSize: 24,
                   fontWeight: 'bold',
                   paddingVertical: 10,
@@ -35,6 +34,7 @@ export default function Home({navigation}) {
                 }}>
                 HOW CAN WE HELP YOU?
               </Text>
+              <Text style={styles.logo}><Text style={{color:'#0A0A26'}}>V</Text>FIX</Text>
             </View>
           </View>
           <View style={[styles.searchBar, {borderBottomLeftRadius: isSearched ? 0 : 10, borderBottomRightRadius: isSearched ? 0 : 10}]}>
@@ -77,15 +77,16 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#ffff',
+    backgroundColor: '#fff',
     height: 900,
   },
   logo: {
     fontSize: 30,
-    color: 'white',
-    textShadowColor: '#3957ED',
-    textShadowOffset: {width: 0, height: 1},
-    textShadowRadius: 15,
+    fontWeight:900,
+    color: '#E5D80D',
+    // textShadowColor: '#3957ED',
+    // textShadowOffset: {width: 0, height: 1},
+    // textShadowRadius: 15,
     textAlign: 'center',
   },
   searchBar: {

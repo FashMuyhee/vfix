@@ -73,7 +73,7 @@ class AuthService {
     bizName,
     isMechanic
   ) => {
-    if (!email || !name || !address || !phone || !isMechanic) {
+    if (!email || !name || !address || !phone ) {
       return { isError: true, msg: 'All Field are required' };
     }
 
