@@ -6,7 +6,7 @@ import RootNavigator from './src/navigation/stack';
 const App = () => {
   return (
     <AuthContentProvider>
-      <StatusBar backgroundColor="white" barStyle="dark-content" animated />
+      <StatusBar backgroundColor="#0A0A26" barStyle="light-content" animated />
       <RootNavigator />
     </AuthContentProvider>
   );
