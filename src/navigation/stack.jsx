@@ -51,10 +51,11 @@ const RootNavigator = () => {
         initialRouteName="login"
         screenOptions={{
           headerTitleAlign: 'center',
-          headerTintColor: 'black',
+          headerTintColor: 'white',
           headerStyle: {
             elevation: 0,
             shadowOffset: {width: 0, height: 0},
+            backgroundColor:'#0A0A26'
           },
           headerTitleStyle: {
             fontSize: 13,
