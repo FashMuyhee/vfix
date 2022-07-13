@@ -13,6 +13,7 @@ import auth from '../service/auth';
 import {AuthContent} from '../context/AuthContext';
 import {Image, Pressable} from 'react-native';
 import avatar from '../images/images.png';
+import ForgotPassword from '../screens/forgot-password';
 
 const Stack = createStackNavigator();
 
@@ -105,6 +106,7 @@ const RootNavigator = () => {
           <>
             <Stack.Screen name="login" component={Login} options={{headerShown: false}} />
             <Stack.Screen name="register" component={Register} options={{headerShown: false}} />
+            <Stack.Screen name="f_password" component={ForgotPassword} options={{headerShown: false}} />
           </>
         )}
       </Stack.Navigator>
