@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, ScrollView, useWindowDimensions, Image, ToastAndroid} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, useWindowDimensions, Image, ToastAndroid, Pressable, ActivityIndicator, Modal} from 'react-native';
 import React from 'react';
 import {useEffect} from 'react';
 import {useState} from 'react';
@@ -7,18 +7,34 @@ import avatar from '../images/images.png';
 import Icon from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-crop-picker';
 
+const Loader = ({visible}) => {
+  return (
+    <Modal transparent statusBarTranslucent visible={visible} animationType="slide">
+      <View style={{height: '100%', width: '100%', backgroundColor: 'rgba(0,0,0,.5)', alignContent: 'center', justifyContent: 'center'}}>
+        <ActivityIndicator size="large" color="#505be4" />
+        <Text style={{textAlign: 'center', marginTop: 10}}>Loading ...</Text>
+      </View>
+    </Modal>
+  );
+};
 const Profile = ({route, navigation}) => {
   const {height} = useWindowDimensions();
 
   const avatarHeight = height * 0.13;
   const [details, setDetails] = useState(null);
   const [image, setImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getDetails = async () => {
+    setIsLoading(true);
     try {
       const res = await auth.getMechanic();
+      setIsLoading(false);
       setDetails(res);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -58,6 +74,10 @@ const Profile = ({route, navigation}) => {
     }
   };
 
+  const logout = async () => {
+    await auth.handelLogout();
+  };
+
   const imageToShow = () => {
     let IMAGE_PATH = '';
     if (image !== null) {
@@ -91,6 +111,19 @@ const Profile = ({route, navigation}) => {
           </>
         )}
       </View>
+      <Pressable onPress={logout} style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', alignSelf: 'center', marginTop: 30}}>
+        <Icon
+          name="log-out"
+          onPress={() => {
+            logout();
+          }}
+          color="black"
+          size={25}
+          style={{marginRight: 10}}
+        />
+        <Text>Logout</Text>
+      </Pressable>
+      <Loader visible={isLoading} />
     </ScrollView>
   );
 };

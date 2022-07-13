@@ -73,11 +73,11 @@ class AuthService {
     bizName,
     isMechanic
   ) => {
-    if (!email || !name || !address || !phone ) {
+    if (!email || !name || !address || !phone) {
       return { isError: true, msg: 'All Field are required' };
     }
 
-    if (isMechanic == true && (!wAddress || !service || !bizName)){
+    if (isMechanic == true && (!wAddress || !service || !bizName)) {
       return { isError: true, msg: 'All Field are required' };
     }
 
@@ -145,6 +145,27 @@ class AuthService {
     }
   };
 
+  forgetPassword = async (email) => {
+    if (this.validateEmail(email)) {
+      try {
+        await auth().sendPasswordResetEmail(email);
+        return {
+          isError: false,
+          msg: `Reset Link has been sent to ${email}`
+        }
+      } catch (e) {
+        if (e.code === 'auth/user-not-found') {
+          return { isError: true, msg: 'Email Not Found' };
+        } else {
+          return { isError: true, msg: 'Something went wrong, Try Again' };
+        }
+      }
+    } else {
+      return { isError: true, msg: 'Invalid Email' };
+
+    }
+  };
+
   getMechanic = async () => {
     try {
       const user = auth().currentUser?.uid;
@@ -163,23 +184,23 @@ class AuthService {
     }
   };
 
-  getMechanics = async () => {
-    try {
-      const docRef = firestore().collection('users').where('isMechanic', '==', true);
-      const isExist = await docRef.get();
-      if (!isExist.empty) {
-        const data = isExist.docs
-        const list = data.map(item => {
-          return { ...item.data() }
-        })
-        return list;
-      } else {
-        return [];
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // getMechanics = async () => {
+  //   try {
+  //     const docRef = firestore().collection('users').where('isMechanic', '==', true);
+  //     const isExist = await docRef.get();
+  //     if (!isExist.empty) {
+  //       const data = isExist.docs
+  //       const list = data.map(item => {
+  //         return { ...item.data() }
+  //       })
+  //       return list;
+  //     } else {
+  //       return [];
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   getProfileImage = async (imageName) => {
     try {
