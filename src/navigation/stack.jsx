@@ -21,10 +21,6 @@ const RootNavigator = () => {
   const {user} = useContext(AuthContent);
   const [details, setDetails] = useState(null);
 
-  const logout = async () => {
-    await auth.handelLogout();
-  };
-
   const imageToShow = () => {
     let IMAGE_PATH = '';
     if (details?.dpLink) {
@@ -82,24 +78,7 @@ const RootNavigator = () => {
             />
             <Stack.Screen name="result" options={{headerTitle: 'Search Result'}} component={SearchResult} />
             <Stack.Screen name="more-info" component={Details} />
-            <Stack.Screen
-              name="profile"
-              component={Profile}
-              options={({navigation}) => ({
-                headerTitle: 'Profile',
-                headerRight: () => (
-                  <Icon
-                    name="logout"
-                    onPress={() => {
-                      logout();
-                    }}
-                    color="white"
-                    size={25}
-                    style={{marginRight: 10}}
-                  />
-                ),
-              })}
-            />
+            <Stack.Screen name="profile" component={Profile} />
             <Stack.Screen name="mechanic-list" component={MechanicList} options={{headerTitle: 'Support List'}} />
           </>
         ) : (
