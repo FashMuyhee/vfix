@@ -7,7 +7,7 @@ import avatar from '../images/images.png';
 import Icon from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-crop-picker';
 
-const Loader = ({visible}) => {
+export const Loader = ({visible}) => {
   return (
     <Modal transparent statusBarTranslucent visible={visible} animationType="slide">
       <View style={{height: '100%', width: '100%', backgroundColor: 'rgba(0,0,0,.5)', alignContent: 'center', justifyContent: 'center'}}>

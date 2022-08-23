@@ -184,23 +184,23 @@ class AuthService {
     }
   };
 
-  // getMechanics = async () => {
-  //   try {
-  //     const docRef = firestore().collection('users').where('isMechanic', '==', true);
-  //     const isExist = await docRef.get();
-  //     if (!isExist.empty) {
-  //       const data = isExist.docs
-  //       const list = data.map(item => {
-  //         return { ...item.data() }
-  //       })
-  //       return list;
-  //     } else {
-  //       return [];
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  getMechanics = async () => {
+    try {
+      const docRef = firestore().collection('users').where('isMechanic', '==', true);
+      const isExist = await docRef.get();
+      if (!isExist.empty) {
+        const data = isExist.docs
+        const list = data.map(item => {
+          return { ...item.data() }
+        })
+        return list;
+      } else {
+        return [];
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   getProfileImage = async (imageName) => {
     try {

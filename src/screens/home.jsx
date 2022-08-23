@@ -1,4 +1,4 @@
-import {View, Text, TextInput, Image, StyleSheet, FlatList, TouchableWithoutFeedback, KeyboardAvoidingView, TouchableOpacity,} from 'react-native';
+import {View, Text, TextInput, Image, StyleSheet, FlatList, TouchableWithoutFeedback, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import keywords from '../sample-data/faults-n-fix';
@@ -43,7 +43,7 @@ export default function Home({navigation}) {
             <View style={styles.search}>
               <Ionicons name="search" size={25} color="black" />
             </View>
-            <TextInput placeholder="Search" value={query} onChangeText={onChangeHandler} style={{width: '70%', fontSize: 15, marginLeft: 5}} />
+            <TextInput placeholder="Search" value={query} onChangeText={onChangeHandler} style={{width: '70%', fontSize: 15, marginLeft: 5, color: 'black'}} placeholderTextColor="#ccc" />
             <TouchableWithoutFeedback
               onPress={() => {
                 setResult([]);
